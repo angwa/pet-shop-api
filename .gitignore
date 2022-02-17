@@ -16,3 +16,4 @@ yarn-error.log
 app/Http/.DS_Store
 /bootstrap/cache
 .DS_Store
+.phpstorm.meta.php
