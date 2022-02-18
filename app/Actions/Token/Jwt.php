@@ -9,6 +9,11 @@ class Jwt
 {
     public function token(User $user)
     {
-       return JWTAuth::fromUser($user);
+        $token = JWTAuth::fromUser($user);
+        $authenticate = JWTAuth::setToken($token)->toUser();
+
+        abort_if(!$authenticate, CODE_UNAUTHORIZED, "Unable to authenticate user."); 
+
+        return $token;
     }
 }

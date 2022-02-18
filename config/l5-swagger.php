@@ -170,6 +170,15 @@ return [
                 ],
                 */
 
+                'bearer_token' => [ // Unique name of security
+                    'type' => 'http', // Valid values are "basic", "http", "apiKey" or "oauth2".
+                    "scheme" => "bearer",
+                    'description' => 'Enter token in format (Bearer <token>)',
+                    'name' => 'Authorization', // The name of the header or query parameter to be used.
+                    'in' => 'header', // The location of the API key. Valid values are "query" or "header".
+                 ],
+                 
+
                 /* Open API 3.0 support
                 'passport' => [ // Unique name of security
                     'type' => 'oauth2', // The type of the security scheme. Valid values are "basic", "apiKey" or "oauth2".
@@ -282,6 +291,7 @@ return [
          */
         'constants' => [
             'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://my-default-host.com'),
+            'bearer' => "Bearer",
         ],
     ],
 ];
