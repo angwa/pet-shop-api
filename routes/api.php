@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ Route::prefix('/v1/user')->name('user.')->group(function () {
     Route::post('/create', [RegisterController::class, 'register'])->name('register');
     Route::post('/login', [LoginController::class, 'login'])->name('login');
     Route::post('/forget-password', [ForgetPasswordController::class, 'forgetPassword'])->name('forget_password');
+    Route::post('/reset-password-token', [ResetPasswordController::class, 'resetPassword'])->name('reset_password');
 
     Route::group(['middleware' => ['jwt.auth']], function () {
         Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');

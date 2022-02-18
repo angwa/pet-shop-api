@@ -41,7 +41,7 @@ class ForgetPasswordAction
     {
         $createToken = PasswordReset::updateOrCreate(
             ['email' => $user->email],
-            ['token' => Hash::make($token)],
+            ['token' => Hash::make($token), 'created_at' => now()],
         );
 
         abort_if(!$createToken, CODE_BAD_REQUEST, "Unable to request for reset password");
