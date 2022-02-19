@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
@@ -45,6 +46,10 @@ Route::prefix('/v1/user')->name('user.')->group(function () {
 
 Route::prefix('/v1')->group(function () {
     Route::get('/categories', [ListCategoryController::class, 'show'])->name('categories');
+});
+
+Route::prefix('/v1/admin')->group(function () {
+    Route::post('/login', [AdminLoginController::class, 'login'])->name('admin_login');
 });
 
 Route::prefix('/v1')->name('product.')->group(function () {

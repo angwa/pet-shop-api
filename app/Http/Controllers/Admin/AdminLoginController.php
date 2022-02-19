@@ -1,22 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
 use App\Actions\Auth\LoginAction;
 use App\Actions\Token\Jwt;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
-use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class AdminLoginController extends Controller
 {
           /**
         * @OA\Post(
-        * path="/api/v1/user/login",
+        * path="/api/v1/admin/login",
         * operationId="Login",
-        * tags={"User"},
-        * summary="User Login",
-        * description="User Login here",
+        * tags={"Admin"},
+        * summary="Admin Login",
+        * description="Admin Login here",
         *     @OA\RequestBody(
         *         @OA\JsonContent(),
         *         @OA\MediaType(
@@ -43,14 +42,14 @@ class LoginController extends Controller
         *      @OA\Response(response=404, description="Resource Not Found"),
         * )
         */
-    public function login(LoginRequest $request)
-    {
-        $user = (new LoginAction($request))->execute();
-        abort_if($user->is_admin === 1, CODE_UNAUTHORIZED, 'Admin cannot login through the user side.');
-
-        return JSON(CODE_SUCCESS, 'Login Successful',[
-            'token' => (new Jwt())->token($user),
-            'login' => auth()->user()
-        ]);
-    }
+        public function login(LoginRequest $request)
+        {
+            $user = (new LoginAction($request))->execute();
+            abort_if($user->is_admin === 0, CODE_UNAUTHORIZED, 'Unauthorized access.');
+    
+            return JSON(CODE_SUCCESS, 'Login Successful',[
+                'token' => (new Jwt())->token($user),
+                'login' => auth()->user()
+            ]);
+        }
 }
