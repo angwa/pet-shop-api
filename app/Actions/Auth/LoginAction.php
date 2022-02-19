@@ -19,11 +19,7 @@ class LoginAction
     public function execute()
     {
         $user = $this->findUser();
-        abort_if(!$user, CODE_UNAUTHORIZED, "User with this email address does not exist");
-
-        $password = $this->verifyPassword($user);
-        abort_if(!$password, CODE_UNAUTHORIZED, "Invalid login details");
-
+        $this->verifyPassword($user);
         $this->logUser($user);
 
         return $user;
@@ -31,12 +27,18 @@ class LoginAction
 
     private function verifyPassword(User $user): bool
     {
-        return Hash::check($this->request->password, $user->password);
+        $password = Hash::check($this->request->password, $user->password);
+        abort_if(!$password, CODE_UNAUTHORIZED, "Invalid login details");
+
+        return true;
     }
 
     private function findUser()
     {
-        return User::where('email', $this->request->email)->first();
+        $user =  User::where('email', $this->request->email)->first();
+        abort_if(!$user, CODE_UNAUTHORIZED, "User with this email address does not exist");
+
+        return $user;
     }
 
     private function logUser(User $user)
