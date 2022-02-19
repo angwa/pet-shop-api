@@ -11,6 +11,7 @@ class Product extends Model
     use HasFactory;
 
     protected $guarded = [];
+    protected $primaryKey = 'uuid';
 
     public function category()
     {

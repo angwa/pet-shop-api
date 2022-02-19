@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Product\CreateProductController;
 use App\Http\Controllers\User\DeleteUserController;
 use App\Http\Controllers\User\EditProfileController;
 use App\Http\Controllers\User\OrderListController;
@@ -34,5 +35,11 @@ Route::prefix('/v1/user')->name('user.')->group(function () {
         Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
         Route::put('/edit', [EditProfileController::class, 'update'])->name('update');
         Route::get('/orders', [OrderListController::class, 'show'])->name('order');
+    });
+});
+
+Route::prefix('/v1/product')->name('product.')->group(function () {
+    Route::middleware(['jwt.auth'])->group(function () {
+        Route::post('/create', [CreateProductController::class, 'store'])->name('create');
     });
 });
