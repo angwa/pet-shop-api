@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Category\ListCategoryController;
 use App\Http\Controllers\Product\CreateProductController;
 use App\Http\Controllers\Product\DeleteProductController;
 use App\Http\Controllers\Product\FetchSingleProductController;
@@ -40,6 +41,10 @@ Route::prefix('/v1/user')->name('user.')->group(function () {
         Route::put('/edit', [EditProfileController::class, 'update'])->name('update');
         Route::get('/orders', [OrderListController::class, 'show'])->name('order');
     });
+});
+
+Route::prefix('/v1')->group(function () {
+    Route::get('/categories', [ListCategoryController::class, 'show'])->name('categories');
 });
 
 Route::prefix('/v1')->name('product.')->group(function () {
