@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Product\CreateProductController;
+use App\Http\Controllers\Product\UpdateProductController;
 use App\Http\Controllers\User\DeleteUserController;
 use App\Http\Controllers\User\EditProfileController;
 use App\Http\Controllers\User\OrderListController;
@@ -41,5 +42,6 @@ Route::prefix('/v1/user')->name('user.')->group(function () {
 Route::prefix('/v1/product')->name('product.')->group(function () {
     Route::middleware(['jwt.auth'])->group(function () {
         Route::post('/create', [CreateProductController::class, 'store'])->name('create');
+        Route::put('/{uuid}', [UpdateProductController::class, 'update'])->name('update');
     });
 });

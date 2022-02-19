@@ -385,6 +385,94 @@
                 ]
             }
         },
+        "/api/v1/product/{uuid}": {
+            "put": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Update product with uuid",
+                "description": "update Product",
+                "operationId": "updateProduct",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "required": [
+                                    "category_uuid",
+                                    "title",
+                                    "price",
+                                    "description",
+                                    "metadata"
+                                ],
+                                "properties": {
+                                    "category_uuid": {
+                                        "type": "text"
+                                    },
+                                    "title": {
+                                        "type": "text"
+                                    },
+                                    "price": {
+                                        "type": "number"
+                                    },
+                                    "description": {
+                                        "type": "text"
+                                    },
+                                    "metadata": {
+                                        "type": "object",
+                                        "example": {
+                                            "image": "string",
+                                            "brand": "string"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Product added successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
         "/api/v1/user": {
             "get": {
                 "tags": [
