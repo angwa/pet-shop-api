@@ -4,18 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-
+Use App\Models\Traits\RouteBykey;
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, RouteByKey;
 
     protected $guarded = [];
-    protected $primaryKey = 'uuid';
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_uuid', 'uuid');
     }
 
 }
