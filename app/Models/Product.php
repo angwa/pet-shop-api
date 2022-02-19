@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Traits\RouteByKey;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-Use App\Models\Traits\RouteBykey;
 class Product extends Model
 {
     use HasFactory, RouteByKey;
