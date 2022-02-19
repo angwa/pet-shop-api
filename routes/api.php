@@ -31,5 +31,6 @@ Route::prefix('/v1/user')->name('user.')->group(function () {
         Route::get('/', [ProfileController::class, 'profile'])->name('profile');
         Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
         Route::put('/edit', [EditProfileController::class, 'update'])->name('update');
+        Route::get('/orders', [OrderListController::class, 'show'])->name('order');
     });
 });
