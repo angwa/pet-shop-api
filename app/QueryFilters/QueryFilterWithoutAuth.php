@@ -1,10 +1,9 @@
 <?php
 namespace App\QueryFilters;
 
-use App\Models\Order;
 use Illuminate\Pipeline\Pipeline;
 
-class QueryFilter 
+class QueryFilterWithoutAuth 
 {
     private $schemaTable;
     private $schemaClass;
@@ -28,7 +27,6 @@ class QueryFilter
                 ->send($this->schemaClass::query())
                 ->through([
                     new Sort($this->schemaTable),
-                    AuthUserFilter::class,
                 ])
                 ->thenReturn()
                 ->get();

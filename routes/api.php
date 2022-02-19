@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Product\CreateProductController;
 use App\Http\Controllers\Product\DeleteProductController;
 use App\Http\Controllers\Product\FetchSingleProductController;
+use App\Http\Controllers\Product\ShowAllProductsController;
 use App\Http\Controllers\Product\UpdateProductController;
 use App\Http\Controllers\User\DeleteUserController;
 use App\Http\Controllers\User\EditProfileController;
@@ -41,11 +42,14 @@ Route::prefix('/v1/user')->name('user.')->group(function () {
     });
 });
 
-Route::prefix('/v1/product')->name('product.')->group(function () {
+Route::prefix('/v1')->name('product.')->group(function () {
     Route::middleware(['jwt.auth'])->group(function () {
-        Route::post('/create', [CreateProductController::class, 'store'])->name('create');
-        Route::put('/{uuid}', [UpdateProductController::class, 'update'])->name('update');
-        Route::get('/{uuid}', [FetchSingleProductController::class, 'show'])->name('show');
-        Route::delete('/{uuid}', [DeleteProductController::class, 'delete'])->name('delete');
+        Route::prefix('/product')->group(function () {
+            Route::post('/create', [CreateProductController::class, 'store'])->name('create');
+            Route::put('/{uuid}', [UpdateProductController::class, 'update'])->name('update');
+            Route::get('/{uuid}', [FetchSingleProductController::class, 'show'])->name('show');
+            Route::delete('/{uuid}', [DeleteProductController::class, 'delete'])->name('delete');
+        });
+        Route::get('/products', [ShowAllProductsController::class, 'showAll'])->name('show_all');
     });
 });
