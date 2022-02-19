@@ -3,30 +3,25 @@
 namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ProductResource;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
-class FetchSingleProductController extends Controller
+class DeleteProductController extends Controller
 {
         /**
-        * @OA\Get(
+        * @OA\Delete(
         * path="/api/v1/product/{uuid}",
-        * operationId="singleProduct",
+        * operationId="deleteProduct",
         * security={{"bearer_token": {}}},
         * tags={"Product"},
-        * summary="Display fetched product",
-        * description="Display fetched product",
+        * summary="Delete specific product",
+        * description="Delete specific product",
         *      @OA\Parameter(
         *           name="uuid",
         *           in="path",
         *           @OA\Schema(
         *           type="string"
         *       )
-        *       ),
-        *      @OA\Response(
-        *          response=200,
-        *          description="Display fetched product",
-        *          @OA\JsonContent()
         *       ),
         *      @OA\Response(
         *          response=422,
@@ -37,10 +32,10 @@ class FetchSingleProductController extends Controller
         *      @OA\Response(response=404, description="Resource Not Found"),
         * )
         */
-    public function show(Product $uuid)
+    public function delete(Product $uuid)
     {
-        $product = new ProductResource($uuid);
+        $uuid->delete();
 
-        return JSON(CODE_SUCCESS, 'Product fetched successfully.', ['product' => $product]);
+        return JSON(CODE_SUCCESS, 'Product deleted successfully');
     }
 }
