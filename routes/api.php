@@ -43,7 +43,7 @@ Route::prefix('/v1/user')->name('user.')->group(function () {
 });
 
 Route::prefix('/v1')->name('product.')->group(function () {
-    Route::middleware(['jwt.auth'])->group(function () {
+    Route::middleware(['jwt.auth','is_admin'])->group(function () {
         Route::prefix('/product')->group(function () {
             Route::post('/create', [CreateProductController::class, 'store'])->name('create');
             Route::put('/{uuid}', [UpdateProductController::class, 'update'])->name('update');
