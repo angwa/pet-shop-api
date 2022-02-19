@@ -45,7 +45,7 @@ class ShowAllProductsController extends Controller
         *       )
         *       ),
         *      @OA\Response(
-        *          response=201,
+        *          response=200,
         *          description="User logout",
         *          @OA\JsonContent()
         *       ),

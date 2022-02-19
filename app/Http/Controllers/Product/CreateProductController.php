@@ -14,7 +14,7 @@ class CreateProductController extends Controller
         * path="/api/v1/product/create",
         * operationId="CreateProduct",
         * security={{"bearer_token": {}}},
-        * tags={"Product"},
+        * tags={"Products"},
         * summary="Create Product",
         * description="Create new Product",
         *     @OA\RequestBody(
@@ -34,7 +34,7 @@ class CreateProductController extends Controller
         *    ),
         *      @OA\Response(
         *          response=201,
-        *          description="Product added successfully",
+        *          description="Product created successfully",
         *          @OA\JsonContent()
         *       ),
         *      @OA\Response(

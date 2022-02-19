@@ -13,7 +13,7 @@ class FetchSingleProductController extends Controller
         * path="/api/v1/product/{uuid}",
         * operationId="singleProduct",
         * security={{"bearer_token": {}}},
-        * tags={"Product"},
+        * tags={"Products"},
         * summary="Display fetched product",
         * description="Display fetched product",
         *      @OA\Parameter(

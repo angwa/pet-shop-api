@@ -309,7 +309,7 @@
         "/api/v1/product/create": {
             "post": {
                 "tags": [
-                    "Product"
+                    "Products"
                 ],
                 "summary": "Create Product",
                 "description": "Create new Product",
@@ -356,7 +356,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Product added successfully",
+                        "description": "Product created successfully",
                         "content": {
                             "application/json": {
                                 "schema": {}
@@ -388,7 +388,7 @@
         "/api/v1/product/{uuid}": {
             "get": {
                 "tags": [
-                    "Product"
+                    "Products"
                 ],
                 "summary": "Display fetched product",
                 "description": "Display fetched product",
@@ -434,7 +434,7 @@
             },
             "put": {
                 "tags": [
-                    "Product"
+                    "Products"
                 ],
                 "summary": "Update product with uuid",
                 "description": "update Product",
@@ -489,7 +489,7 @@
                     }
                 },
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "Product added successfully",
                         "content": {
                             "application/json": {
@@ -520,7 +520,7 @@
             },
             "delete": {
                 "tags": [
-                    "Product"
+                    "Products"
                 ],
                 "summary": "Delete specific product",
                 "description": "Delete specific product",
@@ -535,6 +535,14 @@
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "Product deleted successfully product",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
                     "422": {
                         "description": "Unprocessable Entity",
                         "content": {
@@ -596,7 +604,7 @@
                     }
                 ],
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "User logout",
                         "content": {
                             "application/json": {

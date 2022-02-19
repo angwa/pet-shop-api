@@ -13,7 +13,7 @@ class DeleteProductController extends Controller
         * path="/api/v1/product/{uuid}",
         * operationId="deleteProduct",
         * security={{"bearer_token": {}}},
-        * tags={"Product"},
+        * tags={"Products"},
         * summary="Delete specific product",
         * description="Delete specific product",
         *      @OA\Parameter(
@@ -22,6 +22,11 @@ class DeleteProductController extends Controller
         *           @OA\Schema(
         *           type="string"
         *       )
+        *       ),
+        *      @OA\Response(
+        *          response=200,
+        *          description="Product deleted successfully product",
+        *          @OA\JsonContent()
         *       ),
         *      @OA\Response(
         *          response=422,

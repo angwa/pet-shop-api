@@ -16,7 +16,7 @@ class UpdateProductController extends Controller
         * path="/api/v1/product/{uuid}",
         * operationId="updateProduct",
         * security={{"bearer_token": {}}},
-        * tags={"Product"},
+        * tags={"Products"},
         * summary="Update product with uuid",
         * description="update Product",
         *      @OA\Parameter(
@@ -42,7 +42,7 @@ class UpdateProductController extends Controller
         *        ),
         *    ),
         *      @OA\Response(
-        *          response=201,
+        *          response=200,
         *          description="Product added successfully",
         *          @OA\JsonContent()
         *       ),
