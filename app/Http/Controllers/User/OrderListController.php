@@ -64,6 +64,17 @@ class OrderListController extends Controller
     {
         $orders = (new OrderListAction())->execute();
             
-        return JSON(CODE_SUCCESS, 'User orders retrieved successfully',['orders' => OrderListResource::collection($orders)]);
+        return JSON(CODE_SUCCESS, 'User orders retrieved successfully',[
+            'orders' => OrderListResource::collection($orders),
+            'first_page_url' => $orders ->url(1),
+            'from' => $orders->firstItem(),
+            'per_page' => $orders->perPage(),
+            'prev_page_url' => $orders->previousPageUrl(),
+            'next_page_url' => $orders->nextPageUrl(),
+            'last_page' => $orders->lastPage(),
+            'to' => $orders->lastItem(),
+            'total' => $orders->total(),
+            
+        ]);
     }
 }
