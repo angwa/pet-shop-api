@@ -3,25 +3,20 @@
 namespace App\Actions\User;
 
 use App\Models\Order;
-use App\QueryFilters\AuthUserFilter;
-use App\QueryFilters\Sort;
-use App\QueryFilters\Limit;
-use Illuminate\Pipeline\Pipeline;
+use App\QueryFilters\QueryFilter;
+
+use App\Support\Collection;
 
 
 class OrderListAction
 { 
     public function execute()
     {
-        $orders = app(Pipeline::class)
-                ->send(Order::query())
-                ->through([
-                    new Sort('orders'),
-                    Limit::class,
-                    AuthUserFilter::class,
-                ])
-                ->thenReturn()
-                ->paginate();
+
+        $limit = (!empty(request()->limit)) ? request()->limit : 30;
+
+        $filter = (new QueryFilter(Order::class, 'orders'))->filter();
+        $orders = (new Collection($filter))->paginate($limit);
 
         return $orders;
     }
