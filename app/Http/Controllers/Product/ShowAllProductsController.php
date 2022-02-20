@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Product;
 
-use App\Actions\Product\AllProductsAction;
+use App\Actions\ListActions;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductResource;
+use App\Models\Product;
 
 class ShowAllProductsController extends Controller
 {
@@ -60,7 +61,7 @@ class ShowAllProductsController extends Controller
         */
         public function showAll()
         {
-            $products = (new AllProductsAction())->execute();
+            $products = (new ListActions(Product::class, 'products'))->sortWithoutAuth();
     
             return JSON(CODE_SUCCESS, 'Product fetched successfully.', [
                 'product' => ProductResource::collection($products),

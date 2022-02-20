@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Category;
 
-use App\Actions\Category\ListCategoryAction;
+use App\Actions\ListActions;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
+use App\Models\Category;
 
 class ListCategoryController extends Controller
 {
@@ -59,7 +60,7 @@ class ListCategoryController extends Controller
         */
     public function show()
     {
-        $categories = (new ListCategoryAction())->execute();
+        $categories = (new ListActions(Category::class, 'categories'))->sortWithoutAuth();
 
         return JSON(CODE_SUCCESS, 'Categories retrieved successfully.', [
             'categories' => CategoryResource::collection($categories),

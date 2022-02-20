@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Actions\ListActions;
 use App\Actions\User\OrderListAction;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\OrderListResource;
+use App\Models\Order;
 use Illuminate\Pipeline\Pipeline;
 
 
@@ -62,7 +64,7 @@ class OrderListController extends Controller
         */
     public function show()
     {
-        $orders = (new OrderListAction())->execute();
+        $orders = (new ListActions(Order::class, 'orders'))->sortWithAuth();
             
         return JSON(CODE_SUCCESS, 'User orders retrieved successfully',[
             'orders' => OrderListResource::collection($orders),
