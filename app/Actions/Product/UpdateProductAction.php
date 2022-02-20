@@ -10,13 +10,20 @@ class UpdateProductAction
     private $request;
     private $product;
 
+    /**
+     * @param ProductRequest $request
+     * @param Product $product
+     */
     public function __construct(ProductRequest $request, Product $product)
     {
         $this->request = $request;
         $this->product = $product;
     }
 
-    public function execute()
+    /**
+     * @return bool
+     */
+    public function execute(): bool
     {
         $product = $this->product->update([
             'category_uuid' => $this->request->category_uuid,

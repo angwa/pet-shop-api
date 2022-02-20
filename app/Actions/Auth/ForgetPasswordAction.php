@@ -14,12 +14,18 @@ class ForgetPasswordAction
 {
     private $request;
 
+    /**
+     * @param ForgetPasswordRequest $request
+     */
     public function __construct(ForgetPasswordRequest $request)
     {
         $this->request = $request;
     }
-
-    public function execute()
+    
+    /**
+     * @return object
+     */
+    public function execute(): object
     {
         $user = $this->findUser();
         abort_if(!$user, CODE_BAD_REQUEST, "User with this email address does not exist");
@@ -28,16 +34,25 @@ class ForgetPasswordAction
         $this->logUserRequestForPassword($user, $token);
 
         Mail::to($user->email)->send(new ForgetPasswordMail($user, $token));
-        
+
         return $user;
     }
 
-    private function findUser()
+    /**
+     * @return object
+     */
+    private function findUser(): object
     {
         return User::where('email', $this->request->email)->first();
     }
 
-    private function logUserRequestForPassword(User $user, $token)
+    /**
+     * @param User $user
+     * @param mixed $token
+     * 
+     * @return bool
+     */
+    private function logUserRequestForPassword(User $user, string $token): bool
     {
         $createToken = PasswordReset::updateOrCreate(
             ['email' => $user->email],
@@ -49,9 +64,11 @@ class ForgetPasswordAction
         return $createToken;
     }
 
-    private function generateToken()
+    /**
+     * @return string
+     */
+    private function generateToken(): string
     {
         return strtoupper(Str::random(8));
     }
-
 }

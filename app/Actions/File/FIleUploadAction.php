@@ -10,26 +10,37 @@ class FIleUploadAction
 {
     private $request;
 
+    /**
+     * @param FileUploadRequest $request
+     */
     public function __construct(FileUploadRequest $request)
     {
         $this->request = $request;
     }
 
-    public function execute()
+    /**
+     * @return object
+     */
+    public function execute(): object
     {
-        $uuid = $this->generateUuid(); 
+        $uuid = $this->generateUuid();
         $file = $this->uploadFile($uuid);
 
         return $file;
     }
 
-    private function uploadFile($uuid)
+    /**
+     * @param string $uuid
+     * 
+     * @return object
+     */
+    private function uploadFile(string $uuid): object
     {
         $file = $this->request->file('file');
-        $store = $file->store('pet-shop','pet_shop'); 
+        $store = $file->store('pet-shop', 'pet_shop');
 
         $imageSize = $file->getSize();
-        $size = number_format($imageSize / 1000,2).' KB';
+        $size = number_format($imageSize / 1000, 2) . ' KB';
 
         $upload = File::create([
             'uuid' => $uuid,
@@ -44,7 +55,10 @@ class FIleUploadAction
         return $upload;
     }
 
-    private function generateUuid()
+    /**
+     * @return string
+     */
+    private function generateUuid(): string
     {
         return Str::orderedUuid();
     }

@@ -11,12 +11,18 @@ class CreateProductAction
 {
     private $request;
 
+    /**
+     * @param ProductRequest $request
+     */
     public function __construct(ProductRequest $request)
     {
         $this->request = $request;
     }
 
-    public function execute()
+    /**
+     * @return object
+     */
+    public function execute(): object
     {
         $product = Product::create([
             'uuid' => Str::orderedUuid(),

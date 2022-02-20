@@ -26,7 +26,10 @@ class ListActions
         $this->limit = (!empty(request()->limit)) ? request()->limit : 30;
     }
 
-    public function sortWithoutAuth()
+    /**
+     * @return object
+     */
+    public function sortWithoutAuth(): object
     {
         $filter = (new QueryFilterWithoutAuth($this->schemaClass, $this->schemaTable))->filter();
         $items = (new Collection($filter))->paginate($this->limit);
@@ -34,7 +37,10 @@ class ListActions
         return $items;
     }
 
-    public function sortWithAuth()
+    /**
+     * @return object
+     */
+    public function sortWithAuth(): object
     {
         $filter = (new QueryFilter($this->schemaClass, $this->schemaTable))->filter();
         $items = (new Collection($filter))->paginate($this->limit);
@@ -42,7 +48,10 @@ class ListActions
         return $items;
     }
 
-    public function sortWithUserFields()
+    /**
+     * @return object
+     */
+    public function sortWithUserFields(): object
     {
         $filter = (new FilterUserFields($this->schemaClass, $this->schemaTable))->filter();
         $items = (new Collection($filter))->paginate($this->limit);

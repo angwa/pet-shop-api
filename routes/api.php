@@ -39,7 +39,7 @@ Route::prefix('/v1/user')->name('user.')->group(function () {
     Route::post('/forget-password', [ForgetPasswordController::class, 'forgetPassword'])->name('forget_password');
     Route::post('/reset-password-token', [ResetPasswordController::class, 'resetPassword'])->name('reset_password');
 
-    Route::group(['middleware' => ['jwt.auth','is_user']], function () {
+    Route::group(['middleware' => ['jwt.auth', 'is_user']], function () {
         Route::get('/', [ProfileController::class, 'profile'])->name('profile');
         Route::delete('/', [DeleteUserController::class, 'delete'])->name('delete');
         Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
@@ -61,7 +61,7 @@ Route::prefix('/v1/admin')->group(function () {
 });
 
 Route::prefix('/v1')->name('product.')->group(function () {
-    Route::middleware(['jwt.auth','is_admin'])->group(function () {
+    Route::middleware(['jwt.auth', 'is_admin'])->group(function () {
         Route::prefix('/product')->group(function () {
             Route::post('/create', [CreateProductController::class, 'store'])->name('create');
             Route::put('/{uuid}', [UpdateProductController::class, 'update'])->name('update');

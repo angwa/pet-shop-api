@@ -10,12 +10,18 @@ class LoginAction
 {
     private $request;
 
+    /**
+     * @param LoginRequest $request
+     */
     public function __construct(LoginRequest $request)
     {
         $this->request = $request;
     }
 
-    public function execute()
+    /**
+     * @return object
+     */
+    public function execute(): object
     {
         $user = $this->findUser();
         $this->verifyPassword($user);
@@ -24,6 +30,11 @@ class LoginAction
         return $user;
     }
 
+    /**
+     * @param User $user
+     * 
+     * @return bool
+     */
     private function verifyPassword(User $user): bool
     {
         $password = Hash::check($this->request->password, $user->password);
@@ -32,7 +43,10 @@ class LoginAction
         return true;
     }
 
-    private function findUser()
+    /**
+     * @return object
+     */
+    private function findUser():object
     {
         $user =  User::where('email', $this->request->email)->first();
         abort_if(!$user, CODE_UNAUTHORIZED, "User with this email address does not exist");
@@ -40,11 +54,15 @@ class LoginAction
         return $user;
     }
 
-    private function logUser(User $user)
+    /**
+     * @param User $user
+     * 
+     * @return bool
+     */
+    private function logUser(User $user): bool
     {
-       return $user->update([
+        return $user->update([
             'last_login_at' => now()
         ]);
     }
-
 }

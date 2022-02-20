@@ -12,18 +12,30 @@ class EditProfileAction
     private $request;
     private $user;
 
+    /**
+     * @param UpdateProfileRequest $request
+     * @param User $user
+     */
     public function __construct(UpdateProfileRequest $request, User $user)
     {
         $this->request = $request;
         $this->user = $user;
     }
 
-    public function execute()
+    /**
+     * @return bool
+     */
+    public function execute(): bool
     {
         return $this->updateProfile($this->user);
     }
 
-    private function updateProfile(User $user)
+    /**
+     * @param User $user
+     * 
+     * @return bool
+     */
+    private function updateProfile(User $user): bool
     {
         $user = $user->update([
             'first_name' => $this->request->first_name,
@@ -31,7 +43,7 @@ class EditProfileAction
             'address' => $this->request->address,
             'avatar' => $this->request->avatar,
             'phone_number' => $this->request->phone_number,
-            'is_marketing' => ($this->request->is_marketing) ? $this->request->is_marketing : false, 
+            'is_marketing' => ($this->request->is_marketing) ? $this->request->is_marketing : false,
             'email' => $this->request->email,
             'password' => Hash::make($this->request->password),
         ]);

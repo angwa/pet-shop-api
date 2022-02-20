@@ -8,27 +8,38 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class Jwt
 {
-    public function token(User $user)
+    /**
+     * @param User $user
+     * 
+     * @return string
+     */
+    public function token(User $user): string
     {
         $token = JWTAuth::fromUser($user);
         $authenticate = JWTAuth::setToken($token)->toUser();
 
-        abort_if(!$authenticate, CODE_UNAUTHORIZED, "Unable to authenticate user."); 
+        abort_if(!$authenticate, CODE_UNAUTHORIZED, "Unable to authenticate user.");
 
         $this->updateOrCreateJwtToken($authenticate);
 
         return $token;
     }
 
-    private function updateOrCreateJwtToken(User $user)
+    /**
+     * @param User $user
+     * 
+     * @return object
+     */
+    private function updateOrCreateJwtToken(User $user): object
     {
-       $jwt = $user->jwtToken()->updateOrCreate(
+        $jwt = $user->jwtToken()->updateOrCreate(
             ['user_id' => $user->id,],
             [
                 'unique_id' => Str::orderedUuid(),
                 'token_title' => "User Authentication"
-            ]);
-        
+            ]
+        );
+
         return $jwt;
     }
-} 
+}

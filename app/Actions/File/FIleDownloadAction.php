@@ -7,10 +7,15 @@ use Illuminate\Support\Facades\Storage;
 
 class FIleDownloadAction
 {
-    public function execute($file)
+    /**
+     * @param mixed $file
+     * 
+     * @return object
+     */
+    public function execute($file): object
     {
-        $file = File::where('uuid',$file->uuid)->first();
-       
+        $file = File::where('uuid', $file->uuid)->first();
+
         $storage = Storage::disk('pet_shop');
         $exist = $storage->exists($file->path);
 
