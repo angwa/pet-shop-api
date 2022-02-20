@@ -29,8 +29,8 @@ class UpdateProfileRequest extends FormRequest
         return [
             'first_name' => ['filled', 'string', 'max:255'],
             'last_name' => ['filled', 'string', 'max:255'],
-            'avatar' => ['sometimes','nullable','uuid'],
-            'is_marketing' => ['sometimes','nullable','bool'],
+            'avatar' => ['sometimes', 'nullable', 'uuid'],
+            'is_marketing' => ['sometimes', 'nullable', 'bool'],
             'address' => ['filled', 'string', 'max:255'],
             'phone_number' => ['filled', 'string', 'max:15'],
             'email' => ['filled', 'string', 'email', 'max:255', Rule::unique('users')->ignore(Auth::id())],

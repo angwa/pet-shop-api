@@ -51,7 +51,7 @@ final class JsonResponse
 
     private function setStatusCode(int $statusCode): void
     {
-        if (! in_array($statusCode, array_keys(LaravelJsonResponse::$statusTexts))) {
+        if (!in_array($statusCode, array_keys(LaravelJsonResponse::$statusTexts))) {
             throw new InvalidArgumentException("Invalid HTTP status code used: {$statusCode}");
         }
 
@@ -95,7 +95,7 @@ final class JsonResponse
 
         $response = new self($response->status(), $message, $responseData, $headers);
 
-        if (! $wrap) {
+        if (!$wrap) {
             $response->ignoreDataWrapper();
         }
 
@@ -125,14 +125,14 @@ final class JsonResponse
         $isSuccessful ? $this->setUpSuccessData() : $this->setUpErrorData();
 
         if ($this->useDataWrapper) {
-            $data = (is_null($this->originalData) || (! $isSuccessful && empty($this->data))) ? null : $this->data;
+            $data = (is_null($this->originalData) || (!$isSuccessful && empty($this->data))) ? null : $this->data;
             $this->responseData[$this->getDataWrapper()] = $data;
         } else {
             $this->responseData = $this->responseData + $this->data;
         }
 
         return array_filter($this->responseData, function ($value) {
-            return ! is_null($value);
+            return !is_null($value);
         });
     }
 
@@ -146,7 +146,7 @@ final class JsonResponse
         $messageData = $this->getTranslationDataInDataAttributeAndFile('message_attributes', 'success');
 
         $this->responseData['message'] = $messageData['message'];
-        $this->data = ! $dataEmptyWithoutTranslationAttributes ? $this->data : null;
+        $this->data = !$dataEmptyWithoutTranslationAttributes ? $this->data : null;
     }
 
     private function setUpErrorData(): void
@@ -186,7 +186,7 @@ final class JsonResponse
 
     private function getDataWrapper(): ?string
     {
-        if (! $this->useDataWrapper) {
+        if (!$this->useDataWrapper) {
             return null;
         }
 

@@ -23,6 +23,6 @@ class Order extends Model
 
     public function payment()
     {
-        return $this->belongsTo(Payment::class); 
+        return $this->belongsTo(Payment::class);
     }
 }

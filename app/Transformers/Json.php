@@ -6,7 +6,7 @@ use Illuminate\Http\JsonResponse as LaravelJsonResponse;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 
-if (! function_exists('JSON')) {
+if (!function_exists('JSON')) {
     /**
      * Creates a JSON response using the translations
      *
@@ -36,7 +36,7 @@ if (! function_exists('JSON')) {
     }
 }
 
-if (! function_exists('abort_with_exception')) {
+if (!function_exists('abort_with_exception')) {
     /**
      * Aborts the request with an exception
      *
@@ -61,7 +61,7 @@ if (! function_exists('abort_with_exception')) {
     }
 }
 
-if (! function_exists('abort_with_error')) {
+if (!function_exists('abort_with_error')) {
     /**
      * Throw an HttpExceptionWithErrorData with the given error data.
      *
@@ -80,7 +80,7 @@ if (! function_exists('abort_with_error')) {
 }
 
 
-if (! function_exists('JSONDATA')) {
+if (!function_exists('JSONDATA')) {
     /**
      * Returns json data
      *
@@ -89,7 +89,8 @@ if (! function_exists('JSONDATA')) {
      *
      * @return LaravelJsonResponse
      */
-    function JSONDATA(int $status_code, $data = null, array $headers = []) {
+    function JSONDATA(int $status_code, $data = null, array $headers = [])
+    {
         return new LaravelJsonResponse($data, $status_code, $headers);
     }
 }

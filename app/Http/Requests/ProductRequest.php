@@ -24,11 +24,11 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_uuid' => ['required', 'uuid', 'max:255','exists:categories,uuid'],
+            'category_uuid' => ['required', 'uuid', 'max:255', 'exists:categories,uuid'],
             'title' => ['required', 'string', 'max:255'],
-            'price' => ['required','numeric'],
-            'description' => ['required','string','max:255'],
-            'metadata' => ['required','json']
+            'price' => ['required', 'numeric'],
+            'description' => ['required', 'string', 'max:255'],
+            'metadata' => ['required', 'json']
         ];
     }
 }

@@ -28,8 +28,8 @@ class RegisterRequest extends FormRequest
         return [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'avatar' => ['sometimes','nullable','uuid'],
-            'is_marketing' => ['sometimes','nullable','bool'],
+            'avatar' => ['sometimes', 'nullable', 'uuid'],
+            'is_marketing' => ['sometimes', 'nullable', 'bool'],
             'address' => ['required', 'string', 'max:255'],
             'phone_number' => ['required', 'string', 'max:15'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],

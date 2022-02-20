@@ -20,8 +20,8 @@ class UserIsAdminMiddleware
         if (!Auth::check()) {
             abort(CODE_UNAUTHORIZED, 'Unauthorized');
         }
-        
-        if(Auth::user()->is_admin !== 1){
+
+        if (Auth::user()->is_admin !== 1) {
             abort(CODE_UNAUTHORIZED, 'Access restricted to admin only!');
         }
 
