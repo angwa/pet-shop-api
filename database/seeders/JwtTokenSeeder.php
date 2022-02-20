@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\JwtToken;
 use Illuminate\Database\Seeder;
 
 class JwtTokenSeeder extends Seeder
@@ -13,6 +14,6 @@ class JwtTokenSeeder extends Seeder
      */
     public function run()
     {
-        //
+        JwtToken::factory()->times(50)->create();
     }
 }

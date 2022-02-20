@@ -19,3 +19,4 @@ app/Http/.DS_Store
 .phpstorm.meta.php
 .composer.lock
 /storage/pet-shop/*
+/.php-cs-fixer.cache
