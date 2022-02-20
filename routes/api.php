@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Brand\ListBrandsController;
 use App\Http\Controllers\Category\ListCategoryController;
 use App\Http\Controllers\File\FileDownloadController;
 use App\Http\Controllers\File\FileUploadController;
@@ -50,10 +51,12 @@ Route::prefix('/v1')->group(function () {
     Route::get('/categories', [ListCategoryController::class, 'show'])->name('categories');
     Route::post('/file/upload', [FileUploadController::class, 'upload'])->name('file_upload')->middleware('jwt.auth');
     Route::get('/file/{uuid}', [FileDownloadController::class, 'download'])->name('file_download');
+    Route::get('/brands', [ListBrandsController::class, 'show'])->name('show_brand');
 });
 
 Route::prefix('/v1/admin')->group(function () {
     Route::post('/login', [AdminLoginController::class, 'login'])->name('admin_login');
+    Route::get('/user-listing', [AdminListUserController::class, 'show'])->name('admin_show_users');
 });
 
 Route::prefix('/v1')->name('product.')->group(function () {
