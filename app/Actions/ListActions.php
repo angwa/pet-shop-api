@@ -3,6 +3,7 @@
 namespace App\Actions;
 
 use App\Models\Brand;
+use App\QueryFilters\FilterUserFields;
 use App\QueryFilters\QueryFilter;
 use App\QueryFilters\QueryFilterWithoutAuth;
 use App\Support\Collection;
@@ -37,6 +38,14 @@ class ListActions
     public function sortWithAuth()
     {
         $filter = (new QueryFilter($this->schemaClass, $this->schemaTable))->filter();
+        $items = (new Collection($filter))->paginate($this->limit);
+
+        return $items;
+    }
+
+    public function sortWithUserFields()
+    {
+        $filter = (new FilterUserFields($this->schemaClass, $this->schemaTable))->filter();
         $items = (new Collection($filter))->paginate($this->limit);
 
         return $items;

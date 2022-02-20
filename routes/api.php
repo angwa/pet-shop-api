@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminListUserController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -56,7 +57,7 @@ Route::prefix('/v1')->group(function () {
 
 Route::prefix('/v1/admin')->group(function () {
     Route::post('/login', [AdminLoginController::class, 'login'])->name('admin_login');
-    Route::get('/user-listing', [AdminListUserController::class, 'show'])->name('admin_show_users');
+    Route::get('/user-listing', [AdminListUserController::class, 'show'])->name('admin_show_users')->middleware('is_admin');;
 });
 
 Route::prefix('/v1')->name('product.')->group(function () {
