@@ -1,9 +1,10 @@
 <?php
+
 namespace App\QueryFilters;
 
 use Illuminate\Pipeline\Pipeline;
 
-class QueryFilterWithoutAuth 
+class QueryFilterWithoutAuth
 {
     private $schemaTable;
     private $schemaClass;
@@ -18,18 +19,17 @@ class QueryFilterWithoutAuth
     {
         $this->schemaTable = $schemaTable;
         $this->schemaClass = $schemaClass;
-
     }
-    
+
     public function filter()
     {
         $filters = app(Pipeline::class)
-                ->send($this->schemaClass::query())
-                ->through([
-                    new Sort($this->schemaTable),
-                ])
-                ->thenReturn()
-                ->get();
+            ->send($this->schemaClass::query())
+            ->through([
+                new Sort($this->schemaTable),
+            ])
+            ->thenReturn()
+            ->get();
 
         return $filters;
     }

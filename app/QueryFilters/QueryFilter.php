@@ -1,10 +1,11 @@
 <?php
+
 namespace App\QueryFilters;
 
 use App\Models\Order;
 use Illuminate\Pipeline\Pipeline;
 
-class QueryFilter 
+class QueryFilter
 {
     private $schemaTable;
     private $schemaClass;
@@ -19,19 +20,18 @@ class QueryFilter
     {
         $this->schemaTable = $schemaTable;
         $this->schemaClass = $schemaClass;
-
     }
-    
-    public function filter()
+
+    public function filter(): object
     {
         $filters = app(Pipeline::class)
-                ->send($this->schemaClass::query())
-                ->through([
-                    new Sort($this->schemaTable),
-                    AuthUserFilter::class,
-                ])
-                ->thenReturn()
-                ->get();
+            ->send($this->schemaClass::query())
+            ->through([
+                new Sort($this->schemaTable),
+                AuthUserFilter::class,
+            ])
+            ->thenReturn()
+            ->get();
 
         return $filters;
     }
