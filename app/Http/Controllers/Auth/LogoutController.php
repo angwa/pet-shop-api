@@ -16,8 +16,8 @@ class LogoutController extends Controller
         * summary="User Logout",
         * description="User Logout here",
         *      @OA\Response(
-        *          response=201,
-        *          description="User logout",
+        *          response=200,
+        *          description="User logged out successfully.",
         *          @OA\JsonContent()
         *       ),
         *      @OA\Response(

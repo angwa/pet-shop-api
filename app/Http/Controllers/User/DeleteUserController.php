@@ -16,7 +16,7 @@ class DeleteUserController extends Controller
         * summary="User delete account",
         * description="User delete account",
         *      @OA\Response(
-        *          response=201,
+        *          response=200,
         *          description="User deleted successfully.",
         *          @OA\JsonContent()
         *       ),

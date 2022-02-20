@@ -37,7 +37,7 @@ class EditProfileController extends Controller
         *        ),
         *    ),
         *      @OA\Response(
-        *          response=201,
+        *          response=200,
         *          description="Profile Updated Successfully",
         *          @OA\JsonContent()
         *       ),

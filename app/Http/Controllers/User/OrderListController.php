@@ -49,8 +49,8 @@ class OrderListController extends Controller
         *       )
         *       ),
         *      @OA\Response(
-        *          response=201,
-        *          description="User logout",
+        *          response=200,
+        *          description="Order listed successfully",
         *          @OA\JsonContent()
         *       ),
         *      @OA\Response(

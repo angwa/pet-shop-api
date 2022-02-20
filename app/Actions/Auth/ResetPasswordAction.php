@@ -7,7 +7,6 @@ use App\Models\User;
 use App\Models\PasswordReset;
 use Hash;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Str;
 
 class ResetPasswordAction
 {

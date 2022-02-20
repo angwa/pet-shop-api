@@ -43,7 +43,7 @@ class UpdateProductController extends Controller
         *    ),
         *      @OA\Response(
         *          response=200,
-        *          description="Product added successfully",
+        *          description="Product updated successfully",
         *          @OA\JsonContent()
         *       ),
         *      @OA\Response(

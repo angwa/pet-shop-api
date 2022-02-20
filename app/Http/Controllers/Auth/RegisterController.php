@@ -21,7 +21,7 @@ class RegisterController extends Controller
         *     @OA\RequestBody(
         *         @OA\JsonContent(),
         *         @OA\MediaType(
-        *            mediaType="multipart/form-data",
+        *            mediaType="application/x-www-form-urlencoded",
         *            @OA\Schema(
         *               type="object",
         *               required={"first_name", "last_name", "email", "password", "password_confirmation", "address", "phone_number"},
@@ -39,7 +39,7 @@ class RegisterController extends Controller
         *    ),
         *      @OA\Response(
         *          response=201,
-        *          description="Register Successfully",
+        *          description="Registration Successful",
         *          @OA\JsonContent()
         *       ),
         *      @OA\Response(

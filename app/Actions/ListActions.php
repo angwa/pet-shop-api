@@ -2,7 +2,6 @@
 
 namespace App\Actions;
 
-use App\Models\Brand;
 use App\QueryFilters\FilterUserFields;
 use App\QueryFilters\QueryFilter;
 use App\QueryFilters\QueryFilterWithoutAuth;

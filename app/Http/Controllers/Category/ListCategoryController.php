@@ -46,7 +46,7 @@ class ListCategoryController extends Controller
         *       ),
         *      @OA\Response(
         *          response=200,
-        *          description="User logout",
+        *          description="Categories listed successfully",
         *          @OA\JsonContent()
         *       ),
         *      @OA\Response(

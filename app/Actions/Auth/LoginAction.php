@@ -5,7 +5,6 @@ namespace App\Actions\Auth;
 use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Hash;
-use Illuminate\Support\Str;
 
 class LoginAction
 {

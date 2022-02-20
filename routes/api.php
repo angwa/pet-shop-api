@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminListUserController;
-use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Auth\Admin\AdminListUserController;
+use App\Http\Controllers\Auth\Admin\AdminLoginController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;

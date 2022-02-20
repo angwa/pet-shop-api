@@ -16,8 +16,8 @@ class ProfileController extends Controller
         * summary="Display User Profile",
         * description="View user profile single",
         *      @OA\Response(
-        *          response=201,
-        *          description="Display User Profile",
+        *          response=200,
+        *          description="User profile displayed successfully",
         *          @OA\JsonContent()
         *       ),
         *      @OA\Response(

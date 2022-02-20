@@ -30,7 +30,7 @@ class ResetPasswordController extends Controller
         *        ),
         *    ),
         *      @OA\Response(
-        *          response=201,
+        *          response=200,
         *          description="Password changed Successfully",
         *          @OA\JsonContent()
         *       ),
