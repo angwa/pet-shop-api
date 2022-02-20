@@ -21,7 +21,7 @@ class ForgetPasswordAction
     {
         $this->request = $request;
     }
-    
+
     /**
      * @return object
      */
@@ -50,9 +50,9 @@ class ForgetPasswordAction
      * @param User $user
      * @param mixed $token
      * 
-     * @return bool
+     * @return oject
      */
-    private function logUserRequestForPassword(User $user, string $token): bool
+    private function logUserRequestForPassword(User $user, string $token): object
     {
         $createToken = PasswordReset::updateOrCreate(
             ['email' => $user->email],
