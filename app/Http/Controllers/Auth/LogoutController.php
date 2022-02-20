@@ -7,28 +7,28 @@ use Illuminate\Support\Facades\Auth;
 
 class LogoutController extends Controller
 {
-        /**
-        * @OA\Get(
-        * path="/api/v1/user/logout",
-        * operationId="Logout",
-        * security={{"bearer_token": {}}},
-        * tags={"User"},
-        * summary="User Logout",
-        * description="User Logout here",
-        *      @OA\Response(
-        *          response=200,
-        *          description="User logged out successfully.",
-        *          @OA\JsonContent()
-        *       ),
-        *      @OA\Response(
-        *          response=422,
-        *          description="Unprocessable Entity",
-        *          @OA\JsonContent()
-        *       ),
-        *      @OA\Response(response=400, description="Bad request"),
-        *      @OA\Response(response=404, description="Resource Not Found"),
-        * )
-        */
+    /**
+     * @OA\Get(
+     * path="/api/v1/user/logout",
+     * operationId="Logout",
+     * security={{"bearer_token": {}}},
+     * tags={"User"},
+     * summary="User Logout",
+     * description="User Logout here",
+     *      @OA\Response(
+     *          response=200,
+     *          description="User logged out successfully.",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Unprocessable Entity",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
     public function logout()
     {
         Auth::logout();
