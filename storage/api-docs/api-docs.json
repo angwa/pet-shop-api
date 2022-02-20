@@ -299,8 +299,8 @@
                 "description": "User Logout here",
                 "operationId": "Logout",
                 "responses": {
-                    "201": {
-                        "description": "User logout",
+                    "200": {
+                        "description": "User logged out successfully.",
                         "content": {
                             "application/json": {
                                 "schema": {}
@@ -339,7 +339,7 @@
                 "operationId": "Register",
                 "requestBody": {
                     "content": {
-                        "multipart/form-data": {
+                        "application/x-www-form-urlencoded": {
                             "schema": {
                                 "required": [
                                     "first_name",
@@ -389,7 +389,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Register Successfully",
+                        "description": "Registration Successful",
                         "content": {
                             "application/json": {
                                 "schema": {}
@@ -454,7 +454,7 @@
                     }
                 },
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "Password changed Successfully",
                         "content": {
                             "application/json": {
@@ -583,7 +583,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "User logout",
+                        "description": "Categories listed successfully",
                         "content": {
                             "application/json": {
                                 "schema": {}
@@ -893,7 +893,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Product added successfully",
+                        "description": "Product updated successfully",
                         "content": {
                             "application/json": {
                                 "schema": {}
@@ -1008,7 +1008,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "User logout",
+                        "description": "Products listed successfully",
                         "content": {
                             "application/json": {
                                 "schema": {}
@@ -1046,8 +1046,8 @@
                 "description": "View user profile single",
                 "operationId": "profile",
                 "responses": {
-                    "201": {
-                        "description": "Display User Profile",
+                    "200": {
+                        "description": "User profile displayed successfully",
                         "content": {
                             "application/json": {
                                 "schema": {}
@@ -1083,7 +1083,7 @@
                 "description": "User delete account",
                 "operationId": "DeleteUser",
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "User deleted successfully.",
                         "content": {
                             "application/json": {
@@ -1172,7 +1172,7 @@
                     }
                 },
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "Profile Updated Successfully",
                         "content": {
                             "application/json": {
@@ -1241,8 +1241,8 @@
                     }
                 ],
                 "responses": {
-                    "201": {
-                        "description": "User logout",
+                    "200": {
+                        "description": "Order listed successfully",
                         "content": {
                             "application/json": {
                                 "schema": {}
