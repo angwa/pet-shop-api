@@ -24,9 +24,11 @@ class OrderStatusFactory extends Factory
      */
     public function definition()
     {
+        $status = $this->faker->randomElement(['open', 'pending_payment', 'paid', 'shipped', 'cancelled']);
+        
         return [
             'uuid' => Str::orderedUuid(),
-            'title' => $this->faker->sentence(2),
+            'title' => $status,
         ];
     }
 }

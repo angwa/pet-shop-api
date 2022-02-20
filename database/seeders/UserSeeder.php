@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->times(50)->create();
+        User::factory(10)->create();
 
         $user = User::where('email', 'admin@buckhill.co.uk')->first();
 

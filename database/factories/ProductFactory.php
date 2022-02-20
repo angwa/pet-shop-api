@@ -26,13 +26,13 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'category_uuid' => Category::factory()->create()->uuid,
+            'category_uuid' => Category::all()->random()->uuid,
             'uuid' => Str::orderedUuid(),
             'title' => $this->faker->sentence(2),
-            'price' => $this->faker->randomDigit,
+            'price' => $this->faker->randomFloat(2, 0, 10000),
             'description' => $this->faker->paragraph(3),
             'metadata' => json_encode([
-                "brand" => Brand::factory()->create()->uuid,
+                "brand" => Brand::all()->random()->uuid,
                 "image" => File::factory()->create()->uuid
             ])
         ];
