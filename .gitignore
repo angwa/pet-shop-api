@@ -18,3 +18,4 @@ app/Http/.DS_Store
 .DS_Store
 .phpstorm.meta.php
 .composer.lock
+/storage/pet-shop/*

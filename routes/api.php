@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Category\ListCategoryController;
+use App\Http\Controllers\File\FileDownloadController;
+use App\Http\Controllers\File\FileUploadController;
 use App\Http\Controllers\Product\CreateProductController;
 use App\Http\Controllers\Product\DeleteProductController;
 use App\Http\Controllers\Product\FetchSingleProductController;
@@ -46,6 +48,8 @@ Route::prefix('/v1/user')->name('user.')->group(function () {
 
 Route::prefix('/v1')->group(function () {
     Route::get('/categories', [ListCategoryController::class, 'show'])->name('categories');
+    Route::post('/file/upload', [FileUploadController::class, 'upload'])->name('file_upload')->middleware('jwt.auth');
+    Route::get('/file/{uuid}', [FileDownloadController::class, 'download'])->name('file_download');
 });
 
 Route::prefix('/v1/admin')->group(function () {

@@ -10,4 +10,9 @@ class File extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
 }
