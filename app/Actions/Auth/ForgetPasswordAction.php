@@ -28,7 +28,6 @@ class ForgetPasswordAction
     public function execute(): object
     {
         $user = $this->findUser();
-        abort_if(!$user, CODE_BAD_REQUEST, "User with this email address does not exist");
 
         $token = $this->generateToken();
         $this->logUserRequestForPassword($user, $token);
@@ -43,7 +42,11 @@ class ForgetPasswordAction
      */
     private function findUser(): object
     {
-        return User::where('email', $this->request->email)->first();
+        $user = User::where('email', $this->request->email)->first();
+
+        abort_if(!$user, CODE_NOT_FOUND, "User with this email address does not exist");
+        
+        return $user;
     }
 
     /**
