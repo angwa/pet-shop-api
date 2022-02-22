@@ -21,29 +21,16 @@ After cloning the project, please run this command on the project directory
 composer update
 ```
 ### Configure Environment
-To run the application you must configure the ```.env``` environment file with your database details and mail configurations. Use the following directly if you are running the application on docker.
+To run the application you must configure the ```.env``` environment file with your database details and mail configurations. Use the following commmand to create .env file. 
+```
+cp .env.example .env
 
 ```
-DB_CONNECTION=mysql
-DB_HOST=petshop_db
-DB_PORT=3306
-DB_DATABASE=petshop_db
-DB_USERNAME=root
-DB_PASSWORD=secret
+Once you run the above command, your database configuration will be set if you are running your application on docker. However, if you are not running it on docker, please configure your database in the .env file. You can check the default .env.example if you want to manually create the .env file
 
-MAIL_DRIVER=smtp
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=//replace your email credentials
-MAIL_PASSWORD=//replace your email credentials
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=test@pet_shop.test
-MAIL_FROM_NAME="${APP_NAME}"
+### Please configure your Mail driver in the env to make the application work correctly.
+You have to also configure your mail drivers in the .env file
 
-JWT_SECRET=
-
-```
 ### Clearing Cache and Generating key
 Run the following commands either on the project directory or on the docker container ```petshop_api```
 ```
@@ -85,8 +72,9 @@ If you are not using docker
 [http://127.0.0.1:8000/api/documentation](http://127.0.0.1:8000/api/documentation)
 
 ## Note
-If you run into error, run the command either on the directory or on your docker container
+If you run into error, run the following commands one after the other either on the directory or on your docker container
 ``` 
+composer update
 php artisan optimize
 ```
 
