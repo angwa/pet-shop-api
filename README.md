@@ -60,6 +60,15 @@ Wait for the application's image to be built completely on docker then run
 ```
 docker-compose up
 ```
+### Clear cache inside container
+First Enter into the docker container. Make sure you have successfully build the image wtih the above commands first
+```
+docker exec -it petshop_api bash
+```
+Then run this command 
+``` 
+php artisan optimize
+```
 
 And your application should be live for test on the following 
 
