@@ -85,7 +85,7 @@ If you are not using docker
 [http://127.0.0.1:8000/api/documentation](http://127.0.0.1:8000/api/documentation)
 
 ## Note
-If you run into error, run the command either on the directory or on your dokcer container
+If you run into error, run the command either on the directory or on your docker container
 ``` 
 php artisan optimize
 ```
