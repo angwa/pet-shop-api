@@ -2,23 +2,14 @@
 
 namespace Tests\Feature\File;
 
-use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Tests\Feature\Traits\IsActiveUser;
 use Tests\TestCase;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 class FileUploadTest extends TestCase
 {
-    private $token;
-
-    public function setUp(): void
-    {
-        parent::setUp();
-        $user = User::factory()->create();
-        $this->token = JWTAuth::fromUser($user);
-    }
-
+    use IsActiveUser;
     /**
      * Feature test for file upload.
      *
@@ -41,7 +32,7 @@ class FileUploadTest extends TestCase
         $response = $this->postJson(
             '/api/v1/file/upload',
             ['file' => $file],
-            ['Authorization' => 'Bearer' . $this->token]
+            $this->activeUser()
         );
 
         $response->assertStatus(201);
@@ -53,10 +44,10 @@ class FileUploadTest extends TestCase
         Storage::disk('pet_shop');
         $file = UploadedFile::fake()->image('avatar.jpg');
 
-        $response = $this->postJson(
+        $this->postJson(
             '/api/v1/file/upload',
             [],
-            ['Authorization' => 'Bearer' . $this->token]
+            $this->activeUser()
         )->assertJsonValidationErrors([
             'file'    => 'The file field is required.',
         ]);

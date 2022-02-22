@@ -2,20 +2,14 @@
 
 namespace Tests\Feature\File;
 
-use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Tests\Feature\Traits\IsActiveUser;
 use Tests\TestCase;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 class FileDownloadTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-        $user = User::factory()->create();
-        $this->token = JWTAuth::fromUser($user);
-    }
+    use IsActiveUser;
 
     /**
      * Test for file download
@@ -30,7 +24,7 @@ class FileDownloadTest extends TestCase
         $upload = $this->postJson(
             '/api/v1/file/upload',
             ['file' => $file],
-            ['Authorization' => 'Bearer' . $this->token]
+            $this->activeUser()
         );
 
         $uuid = $upload['data']['file_uuid']['uuid'];

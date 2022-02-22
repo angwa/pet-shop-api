@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\User;
 use Tests\TestCase;
 
 class ForgetPasswordTest extends TestCase
@@ -18,5 +19,16 @@ class ForgetPasswordTest extends TestCase
         ]);
 
         $response->assertStatus(404);
+    }
+
+    public function testUserCanRequestResetPassword()
+    {
+        $email = User::factory()->create()->email;
+
+        $response =  $this->postJson('/api/v1/user/forget-password', [
+            'email' => $email,
+        ]);
+
+        $response->assertStatus(200);
     }
 }
