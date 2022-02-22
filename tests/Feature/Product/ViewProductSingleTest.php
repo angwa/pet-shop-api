@@ -15,8 +15,8 @@ class ViewProductSingleTest extends TestCase
     public function testUserCanViewAProduct()
     {
         $product = Product::factory()->create()->uuid;
-        
-        $response = $this->getJson('/api/v1/product/'.$product);
+
+        $response = $this->getJson('/api/v1/product/' . $product);
 
         $response->assertStatus(200);
         $this->assertIsObject($response);

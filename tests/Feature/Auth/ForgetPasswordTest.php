@@ -8,7 +8,7 @@ use Tests\TestCase;
 class ForgetPasswordTest extends TestCase
 {
     /**
-     * Forget Password test.
+     * User cannot request for nonexisting account password reset.
      *
      * @return void
      */
@@ -21,6 +21,11 @@ class ForgetPasswordTest extends TestCase
         $response->assertStatus(404);
     }
 
+    /**
+     * Forget Password test.
+     *
+     * @return void
+     */
     public function testUserCanRequestResetPassword()
     {
         $email = User::factory()->create()->email;

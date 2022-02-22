@@ -14,6 +14,11 @@ class AdminViewUsersTest extends TestCase
 {
     use WithFaker;
 
+    /**
+     * Admin cannot view users when not logged in
+     * 
+     * @return void
+     */
     public function testAdminCanNotViewUserstWithoutLogin()
     {
         $response = $this->getJson('/api/v1/admin/user-listing');
@@ -21,6 +26,11 @@ class AdminViewUsersTest extends TestCase
         $response->assertStatus(401);
     }
 
+    /**
+     * Admin can view users when loggedin
+     * 
+     * @return void
+     */
     public function testUserCanViewOrdersWhenLoggedIn()
     {
         $user = $this->createAdmin();
@@ -34,6 +44,11 @@ class AdminViewUsersTest extends TestCase
 
     private function createAdmin()
     {
+        /**
+         * Create Admin
+         * 
+         * @return object
+         */
         $response = User::create([
             'uuid' => Str::uuid(),
             'first_name' => $this->faker->name(),

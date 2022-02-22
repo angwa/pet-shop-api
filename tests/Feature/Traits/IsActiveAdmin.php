@@ -15,11 +15,11 @@ trait IsActiveAdmin
     public function activeAdmin()
     {
         $user = $this->createAdmin();
-        $token = ['Authorization' => 'Bearer' . JWTAuth::fromUser($user)] ;
+        $token = ['Authorization' => 'Bearer' . JWTAuth::fromUser($user)];
 
         return $token;
     }
-    
+
     /**
      * @return object
      */

@@ -10,6 +10,11 @@ use Tests\TestCase;
 
 class ResetPasswordTest extends TestCase
 {
+    /** 
+     * User can reset password
+     * 
+     * @return void
+     */
     public function testUserCanResetPassword()
     {
         $data = $this->createToken();
@@ -24,6 +29,11 @@ class ResetPasswordTest extends TestCase
         $response->assertStatus(200);
     }
 
+    /**
+     * User cannot reset password with wrong token
+     * 
+     * @return void
+     */
     public function testUserCanNotResetPasswordWithWrongToken()
     {
         $data = $this->createToken();
@@ -38,6 +48,11 @@ class ResetPasswordTest extends TestCase
         $response->assertStatus(400);
     }
 
+    /**
+     * Create token for reset password
+     * 
+     * @return array
+     */
     private function createToken()
     {
         $token = strtoupper(Str::random(8));

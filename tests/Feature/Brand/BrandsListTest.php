@@ -6,6 +6,10 @@ use Tests\TestCase;
 
 class BrandsListTest extends TestCase
 {
+    /**
+     * User can view all brands
+     * @return void
+     */
     public function testUserCanViewBrands()
     {
         $response = $this->getJson('/api/v1/brands');

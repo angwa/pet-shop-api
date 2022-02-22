@@ -11,12 +11,20 @@ class UserLoginTest extends TestCase
     use WithFaker;
     private $user;
 
+    /**
+     * @return void
+     */
     public function setUp(): void
     {
         parent::setUp();
         $this->user =  User::factory()->create();
     }
 
+    /**
+     * User cannot login without email and password
+     * 
+     * @return void
+     */
     public function testUserCannotLoginWithoutEmailAndPassword()
     {
         $this->postJson('/api/v1/user/login', [])
@@ -26,6 +34,10 @@ class UserLoginTest extends TestCase
             ]);
     }
 
+    /**
+     * User cannot login with incorrect password
+     * @return void
+     */
     public function testUserCannotLoginWithIncorrectPassword()
     {
         $this->postJson('/api/v1/user/login', [
@@ -34,6 +46,11 @@ class UserLoginTest extends TestCase
         ])->assertStatus(401);
     }
 
+    /**
+     * User can now logn with correct email and password
+     * 
+     * @return void
+     */
     public function testUserCanLoginWithEmailAndPassword()
     {
         $response =  $this->postJson('/api/v1/user/login', [

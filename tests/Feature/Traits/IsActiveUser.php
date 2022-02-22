@@ -13,7 +13,7 @@ trait IsActiveUser
     public function activeUser()
     {
         $user = User::factory()->create();
-        $token = ['Authorization' => 'Bearer' . JWTAuth::fromUser($user)] ;
+        $token = ['Authorization' => 'Bearer' . JWTAuth::fromUser($user)];
 
         return $token;
     }

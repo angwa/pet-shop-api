@@ -10,7 +10,7 @@ class UserRegistrationTest extends TestCase
     use WithFaker;
 
     /**
-     * A basic feature test example.
+     * User cannot register without filling the form correctly
      *
      * @return void
      */
@@ -23,6 +23,11 @@ class UserRegistrationTest extends TestCase
             ]);
     }
 
+    /**
+     * User can register new account
+     * 
+     * @return void
+     */
     public function testUserCanRegisterNewAccount()
     {
         $response =  $this->postJson('/api/v1/user/create', [

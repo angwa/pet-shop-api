@@ -12,7 +12,7 @@ class FileDownloadTest extends TestCase
     use IsActiveUser;
 
     /**
-     * Test for file download
+     * User can download an existin file
      *
      * @return void
      */

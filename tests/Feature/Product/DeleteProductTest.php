@@ -33,7 +33,7 @@ class DeleteProductTest extends TestCase
     {
         $uuid = Product::factory()->create()->uuid;
 
-        $response = $this->deleteJson('/api/v1/product/'.$uuid, [], $this->activeAdmin());
+        $response = $this->deleteJson('/api/v1/product/' . $uuid, [], $this->activeAdmin());
 
         $response->assertStatus(200);
     }

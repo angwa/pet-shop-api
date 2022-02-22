@@ -13,6 +13,9 @@ class AdminLoginTest extends TestCase
 {
     use WithFaker;
 
+    /**User cannpt login without email and password
+     * @return void
+     */
     public function testAdminCannotLoginWithoutEmailAndPassword()
     {
         $this->postJson('/api/v1/admin/login', [])
@@ -22,6 +25,11 @@ class AdminLoginTest extends TestCase
             ]);
     }
 
+    /**
+     * User cannot login with incorrect password
+     * 
+     * @return void
+     */
     public function testAdminCannotLoginWithIncorrectPassword()
     {
         $this->postJson('/api/v1/admin/login', [
@@ -41,6 +49,11 @@ class AdminLoginTest extends TestCase
         $response->assertStatus(200);
     }
 
+    /**
+     * Create Admin
+     * 
+     * @return object
+     */
     private function createAdmin()
     {
         $response = User::create([

@@ -21,18 +21,20 @@ class CreateProductTest extends TestCase
 
     public function testAdminCanCreateProductWithoutLogin()
     {
-        $response =  $this->postJson('/api/v1/product/create', [
-            'category_uuid' => Category::factory()->create()->uuid,
-            'title' => $this->faker->sentence(2),
-            'price' => $this->faker->randomFloat(2, 0, 10000),
-            'description' => $this->faker->paragraph(3),
-            'metadata' => json_encode([
-                "brand" => Brand::factory()->create()->uuid,
-                "image" => File::factory()->create()->uuid
-            ])
-        ],
+        $response =  $this->postJson(
+            '/api/v1/product/create',
+            [
+                'category_uuid' => Category::factory()->create()->uuid,
+                'title' => $this->faker->sentence(2),
+                'price' => $this->faker->randomFloat(2, 0, 10000),
+                'description' => $this->faker->paragraph(3),
+                'metadata' => json_encode([
+                    "brand" => Brand::factory()->create()->uuid,
+                    "image" => File::factory()->create()->uuid
+                ])
+            ],
 
-    );
+        );
 
         $response->assertStatus(401);
     }
@@ -44,19 +46,21 @@ class CreateProductTest extends TestCase
      */
     public function testAdminCanCreateProduct()
     {
-        $response =  $this->postJson('/api/v1/product/create', [
-            'category_uuid' => Category::factory()->create()->uuid,
-            'title' => $this->faker->sentence(2),
-            'price' => $this->faker->randomFloat(2, 0, 10000),
-            'description' => $this->faker->paragraph(3),
-            'metadata' => json_encode([
-                "brand" => Brand::factory()->create()->uuid,
-                "image" => File::factory()->create()->uuid
-            ])
-        ],
-        $this->activeAdmin(),
+        $response =  $this->postJson(
+            '/api/v1/product/create',
+            [
+                'category_uuid' => Category::factory()->create()->uuid,
+                'title' => $this->faker->sentence(2),
+                'price' => $this->faker->randomFloat(2, 0, 10000),
+                'description' => $this->faker->paragraph(3),
+                'metadata' => json_encode([
+                    "brand" => Brand::factory()->create()->uuid,
+                    "image" => File::factory()->create()->uuid
+                ])
+            ],
+            $this->activeAdmin(),
 
-    );
+        );
 
         $response->assertStatus(201);
         $this->assertIsObject($response);
