@@ -7,6 +7,9 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 trait IsActiveUser
 {
+    /**
+     * @return array
+     */
     public function activeUser()
     {
         $user = User::factory()->create();

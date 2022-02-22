@@ -828,12 +828,7 @@
                     "404": {
                         "description": "Resource Not Found"
                     }
-                },
-                "security": [
-                    {
-                        "bearer_token": []
-                    }
-                ]
+                }
             },
             "put": {
                 "tags": [
@@ -1029,12 +1024,7 @@
                     "404": {
                         "description": "Resource Not Found"
                     }
-                },
-                "security": [
-                    {
-                        "bearer_token": []
-                    }
-                ]
+                }
             }
         },
         "/api/v1/user": {

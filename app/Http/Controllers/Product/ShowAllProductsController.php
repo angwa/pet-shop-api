@@ -13,7 +13,6 @@ class ShowAllProductsController extends Controller
      * @OA\Get(
      * path="/api/v1/products",
      * operationId="allProducts",
-     * security={{"bearer_token": {}}},
      * tags={"Products"},
      * summary="Show all products",
      * description="Show all products",

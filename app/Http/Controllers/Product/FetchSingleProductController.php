@@ -12,7 +12,6 @@ class FetchSingleProductController extends Controller
      * @OA\Get(
      * path="/api/v1/product/{uuid}",
      * operationId="singleProduct",
-     * security={{"bearer_token": {}}},
      * tags={"Products"},
      * summary="Display fetched product",
      * description="Display fetched product",

@@ -64,10 +64,10 @@ Route::prefix('/v1')->name('product.')->group(function () {
     Route::middleware(['jwt.auth', 'is_admin'])->group(function () {
         Route::prefix('/product')->group(function () {
             Route::post('/create', [CreateProductController::class, 'store'])->name('create');
-            Route::put('/{uuid}', [UpdateProductController::class, 'update'])->name('update');
-            Route::get('/{uuid}', [FetchSingleProductController::class, 'show'])->name('show');
+            Route::put('/{uuid}', [UpdateProductController::class, 'update'])->name('update');   
             Route::delete('/{uuid}', [DeleteProductController::class, 'delete'])->name('delete');
         });
-        Route::get('/products', [ShowAllProductsController::class, 'showAll'])->name('show_all');
     });
+    Route::get('/product/{uuid}', [FetchSingleProductController::class, 'show'])->name('show');
+    Route::get('/products', [ShowAllProductsController::class, 'showAll'])->name('show_all');
 });

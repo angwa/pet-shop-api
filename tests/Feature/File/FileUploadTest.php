@@ -11,7 +11,7 @@ class FileUploadTest extends TestCase
 {
     use IsActiveUser;
     /**
-     * Feature test for file upload.
+     * Feature test for user cannot upload file if not logged in.
      *
      * @return void
      */
@@ -24,6 +24,11 @@ class FileUploadTest extends TestCase
         $response->assertStatus(401);
     }
 
+    /** 
+     * User can upload file 
+     * 
+     * @return void
+     */
     public function testUserCanUploadFiles()
     {
         Storage::disk('pet_shop');
@@ -38,6 +43,12 @@ class FileUploadTest extends TestCase
         $response->assertStatus(201);
         Storage::disk('pet_shop')->assertMissing('missing.jpg');
     }
+
+    /** 
+     * User can upload file , without valiudation
+     * 
+     * @return void
+     */
 
     public function testUserCanNotUploadFileWithoutSelectingFile()
     {
