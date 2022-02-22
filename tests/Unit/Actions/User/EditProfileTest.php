@@ -14,26 +14,32 @@ class EditProfileTest extends TestCase
 
     private $newInstanceOfClass;
 
-    public function setUp() : void
+    /**
+     * @return void
+     */
+    public function setUp(): void
     {
         parent::setUp();
         $user =  User::factory()->create();
         $this->newInstanceOfClass = new EditProfileAction($this->request(), $user);
     }
-    
+
     /**
      * Execute method test
      *
      * @return void
      */
-    public function testExecute()
+    public function testExecuteMethodOfEditProfileActionShouldReturntrue()
     {
         $data = $this->request();
 
         $this->assertTrue($this->newInstanceOfClass->execute($data));
     }
 
-    private function request()
+    /**
+     * @return UpdateProfileRequest
+     */
+    private function request(): UpdateProfileRequest
     {
         $request = new UpdateProfileRequest();
 
@@ -42,9 +48,9 @@ class EditProfileTest extends TestCase
             'last_name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => 'userpassword', 
+            'password' => 'userpassword',
             'address' => $this->faker->address(),
-            'phone_number' => '+'.$this->faker->randomDigitNotZero().$this->faker->numerify('###-###-####'),
+            'phone_number' => '+' . $this->faker->randomDigitNotZero() . $this->faker->numerify('###-###-####'),
             'is_marketing' => '0',
         ]);
 

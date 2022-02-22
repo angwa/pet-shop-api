@@ -17,6 +17,9 @@ class CreateProductTest extends TestCase
 
     private $newInstanceOfClass;
 
+    /**
+     * @return void
+     */
     public function setUp(): void
     {
         parent::setUp();
@@ -24,16 +27,19 @@ class CreateProductTest extends TestCase
     }
 
     /**
-     * Execute method test
+     * Execute method test for product creation
      *
      * @return void
      */
-    public function testExecute()
+    public function testExecuteForCreatingMethodShouldReturnObject()
     {
         $this->assertIsObject($this->newInstanceOfClass->execute());
     }
 
-    private function request()
+    /**
+     * @return ProductRequest
+     */
+    private function request(): ProductRequest
     {
         $request = new ProductRequest();
 

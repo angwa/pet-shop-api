@@ -18,7 +18,7 @@ class ListHelpersTest extends TestCase
     }
 
     /**
-     * Execute method test
+     * sortWithAuth method test
      *
      * @return void
      */
@@ -35,7 +35,7 @@ class ListHelpersTest extends TestCase
         $this->assertIsObject($this->newInstanceOfClass->sortWithAuth());
     }
     /**
-     * Execute method test
+     * sortWithoutAuth method test
      *
      * @return void
      */
@@ -46,7 +46,7 @@ class ListHelpersTest extends TestCase
         $this->assertIsObject($this->newInstanceOfClass->sortWithoutAuth());
     }
     /**
-     * Execute method test
+     * sortWithUserFields method test
      *
      * @return void
      */

@@ -6,7 +6,6 @@ use App\Actions\Auth\CreateNewUser;
 use App\Http\Requests\RegisterRequest;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CreateNewUserTest extends TestCase
 {
@@ -14,25 +13,31 @@ class CreateNewUserTest extends TestCase
 
     private $newInstanceOfClass;
 
-    public function setUp() : void
+    /**
+     * @return void
+     */
+    public function setUp(): void
     {
         parent::setUp();
         $this->newInstanceOfClass = new CreateNewUser();
     }
-    
+
     /**
-     * Execute method test
+     * Test if the execute method of CreateNewUserAction runs successfully
      *
      * @return void
      */
-    public function testExecute()
+    public function testExecuteMethodForCreatingUserAccountShouldRun()
     {
         $data = $this->request();
 
         $this->assertIsObject($this->newInstanceOfClass->execute($data));
     }
 
-    private function request()
+    /**
+     * @return RegisterRequest
+     */
+    private function request(): RegisterRequest
     {
         $request = new RegisterRequest();
 
@@ -41,13 +46,12 @@ class CreateNewUserTest extends TestCase
             'last_name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => 'userpassword', 
+            'password' => 'userpassword',
             'address' => $this->faker->address(),
-            'phone_number' => '+'.$this->faker->randomDigitNotZero().$this->faker->numerify('###-###-####'),
+            'phone_number' => '+' . $this->faker->randomDigitNotZero() . $this->faker->numerify('###-###-####'),
             'is_marketing' => '0',
         ]);
 
         return $request;
     }
-
 }

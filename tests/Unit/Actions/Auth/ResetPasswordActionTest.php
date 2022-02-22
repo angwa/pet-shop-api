@@ -33,7 +33,10 @@ class ResetPasswordActionTest extends TestCase
         $this->assertIsObject($this->newInstanceOfClass->execute());
     }
 
-    private function request()
+    /**
+     * @return PasswordResetRequest
+     */
+    private function request(): PasswordResetRequest
     {
         $request = new PasswordResetRequest();
 
@@ -47,7 +50,10 @@ class ResetPasswordActionTest extends TestCase
         return $request;
     }
 
-    private function createToken()
+    /**
+     * @return array
+     */
+    private function createToken(): array
     {
         $token = strtoupper(Str::random(8));
         $email = User::factory()->create()->email;

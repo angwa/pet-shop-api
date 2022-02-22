@@ -18,6 +18,9 @@ class UpdateProductTest extends TestCase
 
     private $newInstanceOfClass;
 
+    /**
+     * @return void
+     */
     public function setUp(): void
     {
         parent::setUp();
@@ -26,16 +29,19 @@ class UpdateProductTest extends TestCase
     }
 
     /**
-     * Execute method test
+     * Execute method test for product update should return true
      *
      * @return void
      */
-    public function testExecute()
+    public function testExecutMethodForProductOdateShouldReturnTrue()
     {
-        $this->assertTrue(True);
+        $this->assertTrue($this->newInstanceOfClass->execute());
     }
 
-    private function request()
+    /**
+     * @return ProductRequest
+     */
+    private function request(): ProductRequest
     {
         $request = new ProductRequest();
 

@@ -14,6 +14,9 @@ class LoginTest extends TestCase
 
     private $newInstanceOfClass;
 
+    /**
+     * @return void
+     */
     public function setUp(): void
     {
         parent::setUp();
@@ -21,16 +24,19 @@ class LoginTest extends TestCase
     }
 
     /**
-     * Execute method test
+     * Execute method test for login Action
      *
      * @return void
      */
-    public function testExecute()
+    public function testExecuteMethodForLoginShouldWork()
     {
         $this->assertIsObject($this->newInstanceOfClass->execute());
     }
 
-    private function request()
+    /**
+     * @return LoginRequest
+     */
+    private function request(): LoginRequest
     {
         $request = new LoginRequest();
 

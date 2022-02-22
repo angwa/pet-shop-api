@@ -15,6 +15,9 @@ class ForgetPasswordTest extends TestCase
 
     private $newInstanceOfClass;
 
+    /**
+     * @return void
+     */
     public function setUp(): void
     {
         parent::setUp();
@@ -22,16 +25,19 @@ class ForgetPasswordTest extends TestCase
     }
 
     /**
-     * Execute method test
+     * Execute method test for forget password action
      *
      * @return void
      */
-    public function testExecute()
+    public function testExecuteMethodOfPasswordResetActionShouldWork()
     {
         $this->assertIsObject($this->newInstanceOfClass->execute());
     }
 
-    private function request()
+    /**
+     * @return ForgetPasswordRequest
+     */
+    private function request(): ForgetPasswordRequest
     {
         $request = new ForgetPasswordRequest();
 

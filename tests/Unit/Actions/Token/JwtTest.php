@@ -10,22 +10,24 @@ class JwtTest extends TestCase
 {
 
 
+    /**
+     * @return void
+     */
     public function setUp(): void
     {
         parent::setUp();
-  
+
         $this->newInstanceOfClass = new Jwt();
     }
 
     /**
-     * Execute method test
+     * token method of jwt
      *
      * @return void
      */
-    public function testToken()
+    public function testJwtTokenShouldReturnString()
     {
         $user =  User::factory()->create();
         $this->assertIsString($this->newInstanceOfClass->token($user));
     }
-
 }
