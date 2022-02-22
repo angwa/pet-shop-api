@@ -16000,6 +16000,28 @@
         class Str {
          
     }
+            /**
+     * 
+     *
+     */ 
+        class Collection {
+                    /**
+         * Paginate a standard Laravel Collection.
+         *
+         * @param int $perPage
+         * @param int $total
+         * @param int $page
+         * @param string $pageName
+         * @return array 
+         * @see \App\Providers\ExtendCollectionServiceProvider::boot()
+         * @static 
+         */ 
+        public static function paginate($perPage, $total = null, $page = null, $pageName = 'page')
+        {
+                        return \Illuminate\Support\Collection::paginate($perPage, $total, $page, $pageName);
+        }
+         
+    }
      
 }
 
@@ -16863,6 +16885,17 @@
         {
                         return \Illuminate\Http\Request::hasValidRelativeSignature();
         }
+         
+    }
+     
+}
+
+    namespace Tymon\JWTAuth\Claims { 
+            /**
+     * 
+     *
+     */ 
+        class Collection {
          
     }
      

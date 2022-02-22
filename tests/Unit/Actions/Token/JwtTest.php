@@ -8,8 +8,6 @@ use Tests\TestCase;
 
 class JwtTest extends TestCase
 {
-
-
     /**
      * @return void
      */
