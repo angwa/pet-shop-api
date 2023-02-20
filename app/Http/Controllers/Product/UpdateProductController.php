@@ -51,8 +51,8 @@ class UpdateProductController extends Controller
      *          description="Unprocessable Entity",
      *          @OA\JsonContent()
      *       ),
-     *      @OA\Response(response=400, description="Bad request"),
-     *      @OA\Response(response=404, description="Resource Not Found"),
+     *      @OA\Response(response=400, description="Bad request."),
+     *      @OA\Response(response=404, description="Resource Not Found."),
      * )
      */
     public function update(ProductRequest $request, Product $uuid)
