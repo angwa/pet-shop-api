@@ -23,7 +23,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => '$2y$10$qf3F85r/eeHi114r9DXpXeLQmbgHieSIgpau5Ss5kgr414cuB3Z0C', // userpassword
             'address' => $this->faker->address(),
-            'phone_number' => '+'.$this->faker->randomDigitNotZero().$this->faker->numerify('###-###-####'),
+            'phone_number' => '+' . $this->faker->randomDigitNotZero() . $this->faker->numerify('###-###-####'),
             'is_marketing' => '0',
         ];
     }
